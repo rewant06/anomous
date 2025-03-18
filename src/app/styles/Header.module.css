@@ -1,0 +1,119 @@
+.header {
+  background: #333;
+  color: #fff;
+  padding: 0.7rem 0; /* Decreased padding */
+  text-align: center;
+  position: fixed; /* Ensure the header is always visible */
+  top: 0;
+  width: 100%; /* Ensure the header takes the full width */
+  z-index: 100;
+}
+
+.header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.logoContainer {
+  float: left;
+  margin-left: 15px; /* Decreased margin */
+}
+
+.logo {
+  width: 50px; /* Decreased logo size */
+  height: auto;
+}
+
+.nav {
+  float: right;
+  margin-right: 15px; /* Decreased margin */
+}
+
+.navList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navItem {
+  display: inline;
+  margin-left: 15px; /* Decreased margin */
+}
+
+.navItem a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem; /* Decreased font size */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .logoContainer {
+      float: none;
+      margin: 0 auto;
+      text-align: center;
+  }
+
+  .logo {
+      width: 40px; /* Adjust logo size for tablets */
+  }
+
+  .nav {
+      float: none;
+      margin: 0 auto;
+      text-align: center;
+  }
+
+  .navList {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .navItem {
+      display: block;
+      margin: 10px 0;
+  }
+
+  .navbarToggle {
+      display: block;
+      background: #333;
+      color: #fff;
+      padding: 0.4rem 0.8rem; /* Decreased padding */
+      border: none;
+      cursor: pointer;
+      margin: 0 auto;
+      font-size: 1.3rem; /* Decreased font size */
+      position: absolute;
+      right: 10px; /* Adjusted position */
+      top: 10px; /* Adjusted position */
+  }
+
+  .navVisible .navList {
+      display: flex;
+  }
+
+  /* .nav.navVisible {
+    display: flex;
+    flex-direction: column;
+} */
+
+
+}
+
+@media (max-width: 480px) {
+  .logo {
+      width: 40px; /* Adjust logo size for mobile */
+  }
+
+  .navbarToggle {
+      padding: 0.3rem 0.6rem; /* Decreased padding */
+  }
+}
+
+@media (min-width: 769px) {
+  .navbarToggle {
+      display: none; /* Hide navbar toggle button on larger screens */
+  }
+}

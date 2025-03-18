@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String // Admin password for authentication
+  createdAt DateTime @default(now())
+
+  approvedPosts Post[] @relation("AdminApprovals") // Relation to the Post model
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String // User password for authentication
+  createdAt DateTime @default(now())
+
+  posts Post[] @relation("UserPosts") // Relation to the Post model
+
+  @@index([username]) // Index for faster queries by username
+}
+
+model Post {
+  id        String     @id @default(uuid())
+  title     String
+  content   String
+  status    PostStatus @default(PENDING) // Status of the post (pending, approved, archived)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  author   User   @relation("UserPosts", fields: [authorId], references: [id], onDelete: Cascade)
+  authorId String
+
+  approvedBy   Admin?  @relation("AdminApprovals", fields: [approvedById], references: [id]) // Admin who approved the post
+  approvedById String?
+
+  archivedAt DateTime? // Timestamp for when the post was archived
+}
+
+enum PostStatus {
+  PENDING // Post is waiting for admin approval
+  APPROVED // Post is approved and visible to others
+  ARCHIVED // Post is archived by the user
+}

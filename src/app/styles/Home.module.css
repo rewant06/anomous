@@ -1,0 +1,57 @@
+.container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  .sidebarAd {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .footerAd {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+    }
+  
+    .heroImage {
+      max-width: 80%;
+    }
+  
+    .featureList,
+    .pricingPlans {
+      flex-direction: column;
+    }
+  
+    .nav {
+      float: none;
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .navList {
+      display: inline-block;
+    }
+  
+    .navItem {
+      margin: 0 10px;
+    }
+  }
